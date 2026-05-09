@@ -1,71 +1,151 @@
 <!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Passeport Mini Basket — ES BLANQUEFORT BASKET BALL🏀 </title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--g:#0B5C3B;--gd:#063F2C;--gs:#18A66F;--gp:#E7F3EC;--o:#F68B1F;--op:#FFF0DE;--bg:#EEF2ED;--t:#203229;--m:#66736C;--w:#fff;--r:30px;--sh:0 16px 36px rgba(7,45,30,.11)}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:"DM Sans",sans-serif;background:linear-gradient(180deg,#F9FBF7,var(--bg));color:var(--t)}button,select{font-family:inherit}.app{max-width:1180px;margin:auto;padding:16px 16px 105px}
+.header{background:linear-gradient(135deg,var(--g),var(--gd));color:#fff;border-radius:34px;padding:22px;display:flex;gap:18px;align-items:center;box-shadow:var(--sh);position:relative;overflow:hidden}.header:after{content:"";position:absolute;right:-60px;top:-60px;width:190px;height:190px;border-radius:50%;background:rgba(255,255,255,.1)}
+.logo{width:96px;height:96px;background:white;border-radius:28px;padding:8px;z-index:1;flex:0 0 auto}.logo img{width:100%;height:100%;object-fit:contain}.headcopy{z-index:1}.header h1{font-family:"Barlow Condensed";font-size:clamp(42px,7vw,72px);line-height:.84;letter-spacing:-.05em}.header p{margin-top:8px;font-weight:800;color:rgba(255,255,255,.88);font-size:14px}.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.pill{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.13);font-size:12px;font-weight:900}
+.tabs{margin-top:16px;background:white;border-radius:24px;padding:8px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;box-shadow:0 8px 22px rgba(7,45,30,.08);position:sticky;top:8px;z-index:20}.tabs button{border:0;border-radius:17px;min-height:52px;background:transparent;color:var(--g);font-weight:1000;cursor:pointer}.tabs button.active{background:var(--g);color:white}
+.screen{display:none}.screen.active{display:block}.title{display:flex;justify-content:space-between;gap:12px;margin:22px 2px 14px}.title h2{font-family:"Barlow Condensed";font-size:44px;line-height:.86;letter-spacing:-.045em}.title span{color:var(--m);font-size:13px;font-weight:900}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:white;border-radius:var(--r);padding:22px;box-shadow:0 8px 22px rgba(7,45,30,.08)}
+.player{background:linear-gradient(150deg,var(--g),var(--gd));color:white;border-radius:var(--r);padding:24px;min-height:300px;position:relative;overflow:hidden;box-shadow:var(--sh)}.player:after{content:"";position:absolute;right:-50px;top:-50px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.1)}.meta{font-weight:900;color:rgba(255,255,255,.78);font-size:13px}.player h2{font-family:"Barlow Condensed";font-size:78px;line-height:.82;letter-spacing:-.06em;margin-top:10px}.jersey{width:86px;height:86px;border-radius:22px;background:rgba(255,255,255,.14);display:grid;place-items:center;font-family:"Barlow Condensed";font-size:38px;font-weight:900;margin-top:18px}.stars{margin-top:16px;font-size:28px;letter-spacing:2px}.stats{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.stat{border-radius:999px;padding:8px 11px;background:rgba(255,255,255,.13);font-size:12px;font-weight:900}
+.jap{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.japcard{border-radius:var(--r);padding:22px;min-height:225px;position:relative;overflow:hidden;box-shadow:0 8px 22px rgba(7,45,30,.08)}.japcard h3{font-family:"Barlow Condensed";font-size:50px;line-height:.84;letter-spacing:-.055em}.japcard p{margin-top:11px;font-size:14px;font-weight:800;max-width:230px}.japcard .mark{position:absolute;right:18px;bottom:10px;font-size:76px;opacity:.12}.play{background:linear-gradient(145deg,var(--g),var(--gd));color:white}.ref{background:linear-gradient(145deg,var(--o),#C76600);color:white}.part{background:white;color:var(--g);border:2px solid #D5E8DD}.part p{color:#355D4C}
+.tiny{background:white;border-radius:var(--r);padding:24px;min-height:300px;display:grid;place-items:center;text-align:center;box-shadow:0 8px 22px rgba(7,45,30,.08)}.tinyname{display:inline-flex;padding:8px 18px;border-radius:999px;background:var(--gp);color:var(--g);font-weight:1000;letter-spacing:.04em;margin-bottom:16px}.ball{width:116px;height:116px;border-radius:32px;background:linear-gradient(145deg,var(--g),var(--gd));color:white;display:grid;place-items:center;font-size:54px;margin:auto auto 18px}.tiny h2{font-family:"Barlow Condensed";font-size:56px;line-height:.82;letter-spacing:-.055em}.tiny p{margin-top:10px;color:var(--m);font-weight:800}
+.badges{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.badge{aspect-ratio:1;background:#F7F8F5;border-radius:24px;border:3px solid white;display:grid;place-items:center;font-size:34px;position:relative;box-shadow:0 7px 16px rgba(0,0,0,.05)}.badge small{position:absolute;left:4px;right:4px;bottom:7px;font-size:10px;font-weight:1000;color:var(--t)}
+.info{display:grid;gap:10px}.line{display:flex;align-items:center;gap:12px;background:#F8FBF8;border:1px solid #DDE7E0;border-radius:22px;padding:14px}.ico{width:46px;height:46px;border-radius:16px;background:white;display:grid;place-items:center;font-size:23px;box-shadow:0 5px 12px rgba(0,0,0,.04);flex:0 0 auto}.line strong{display:block;font-size:14px}.line span{display:block;color:var(--m);font-size:13px;font-weight:800;margin-top:2px}
+.missions{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.mission{background:white;border-radius:var(--r);padding:20px;box-shadow:0 8px 22px rgba(7,45,30,.08)}.mi{width:62px;height:62px;border-radius:22px;display:grid;place-items:center;font-size:30px;background:var(--gp);margin-bottom:12px}.mission h3{font-family:"Barlow Condensed";font-size:36px;line-height:.9}.mission p{margin-top:9px;color:var(--m);font-size:13px;font-weight:800}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.choice{min-height:76px;border:0;border-radius:18px;background:#F8FBF8;border:2px solid #DDE7E0;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;cursor:pointer;font-size:24px;font-weight:1000}.choice small{font-size:10px;color:var(--t)}.choice.correct{background:var(--gp);border-color:var(--gs)}.choice.wrong{background:var(--op);border-color:var(--o)}.feedback{margin-top:10px;min-height:38px;border-radius:16px;padding:10px 12px;background:#F8FBF8;color:var(--m);font-size:13px;font-weight:1000}.feedback.ok{background:var(--gp);color:var(--g)}.feedback.ko{background:var(--op);color:#7A4700}.memo{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}.memocard{aspect-ratio:1;border:0;border-radius:18px;background:var(--g);color:white;font-size:28px;cursor:pointer}.memocard.open,.memocard.done{background:#F7F8F5;color:var(--t);border:2px solid white}
+.filters{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}.filter{background:white;border-radius:20px;border:1px solid #DDE7E0;padding:12px;box-shadow:0 8px 22px rgba(7,45,30,.08)}.filter label{display:block;font-size:11px;font-weight:1000;color:var(--m);text-transform:uppercase;margin-bottom:5px}.filter select{width:100%;border:0;outline:0;background:transparent;color:var(--g);font-weight:1000}
+.table{background:white;border-radius:var(--r);overflow:hidden;box-shadow:0 8px 22px rgba(7,45,30,.08)}.thead{background:linear-gradient(145deg,var(--g),var(--gd));color:white;padding:18px;display:flex;justify-content:space-between;gap:12px;align-items:center}.thead h2{font-family:"Barlow Condensed";font-size:42px;line-height:.86}.thead span{font-size:13px;color:rgba(255,255,255,.84);font-weight:800}.row{display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr .8fr;gap:8px;align-items:center;padding:13px 16px;border-bottom:1px solid #DDE7E0}.row:last-child{border-bottom:0}.kid strong{display:block;font-size:15px}.kid span{display:block;color:var(--m);font-size:12px;font-weight:800;margin-top:2px}.level{padding:10px 8px;border-radius:15px;text-align:center;font-size:12px;font-weight:1000}.green{background:var(--gp);color:var(--g)}.orange{background:var(--op);color:#9B5600}.white{background:white;border:2px solid #D5E8DD;color:var(--g)}.gray{background:#F4F7F5;color:var(--t)}
+.exportgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.export{background:white;border-radius:26px;padding:18px;box-shadow:0 8px 22px rgba(7,45,30,.08)}.export strong{display:block;font-family:"Barlow Condensed";font-size:48px;line-height:.84;color:var(--g)}.export span{font-size:13px;color:var(--m);font-weight:900}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.btn{border:0;border-radius:16px;padding:13px 16px;font-weight:1000;cursor:pointer;background:var(--g);color:white}.btn.secondary{background:var(--gp);color:var(--g)}.btn.orange{background:var(--o);color:white}.note{margin-top:16px;background:var(--op);color:#7A4700;border-radius:22px;padding:14px 16px;font-weight:800;font-size:14px}
+.modal{position:fixed;inset:0;background:rgba(4,35,23,.62);display:none;align-items:center;justify-content:center;padding:18px;z-index:200}.modal.active{display:flex}.modalcard{width:100%;max-width:480px;background:white;border-radius:34px;padding:24px;text-align:center;box-shadow:0 28px 70px rgba(0,0,0,.28)}.modalcard h2{font-family:"Barlow Condensed";font-size:50px;line-height:.86;color:var(--g)}.modalcard p{margin-top:10px;color:var(--m);font-weight:800}.modalstar{font-size:44px;margin-top:14px}
+.bottom{display:none}
+@media(max-width:980px){.grid2,.tinywrap{grid-template-columns:1fr}.jap,.missions{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.exportgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.app{padding:12px 12px 102px}.header{padding:16px;border-radius:28px;align-items:flex-start}.logo{width:78px;height:78px;border-radius:22px}.header h1{font-size:38px}.header p{font-size:12px}.tabs{display:none}.title h2{font-size:36px}.player{min-height:250px}.player h2{font-size:58px}.japcard{min-height:180px}.japcard h3{font-size:42px}.tiny{min-height:240px;padding:20px}.tiny h2{font-size:45px}.ball{width:94px;height:94px;border-radius:28px;font-size:44px}.badges{grid-template-columns:repeat(3,1fr)}.filters{grid-template-columns:1fr}.row{grid-template-columns:1fr}.level{text-align:left;padding:12px}.missions{grid-template-columns:1fr}.bottom{position:fixed;left:0;right:0;bottom:0;z-index:100;max-width:680px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;background:white;padding:10px 8px 18px;border-top-left-radius:26px;border-top-right-radius:26px;box-shadow:0 -12px 28px rgba(0,0,0,.12)}.bottom button{border:0;background:transparent;color:var(--m);font-size:10px;font-weight:1000;display:grid;gap:3px;place-items:center}.bottom button span{font-size:22px}.bottom button.active{color:var(--g)}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="header">
+<div class="logo"><img src="logo.png" alt="Logo ESBB"></div>
+<div class="headcopy">
+<h1>Passeport Mini Basket</h1>
+<p>Je joue · J’arbitre · Je participe · École de Mini Basket</p>
+<div class="pills"><div class="pill">Version démo complète</div><div class="pill">Mobile / tablette</div><div class="pill">Raccord appli plus tard</div></div>
+</div>
+</header>
+
+<nav class="tabs">
+<button class="active" onclick="showScreen('u5',this)">U5/U7</button>
+<button onclick="showScreen('u9',this)">U9/U11</button>
+<button onclick="showScreen('missions',this)">Missions</button>
+<button onclick="showScreen('coach',this)">Coach</button>
+<button onclick="showScreen('exports',this)">Exports</button>
+</nav>
+
+<section id="u5" class="screen active">
+<div class="title"><h2>Mode petits</h2><span>U5 / U7 · visuel, simple, parent-enfant</span></div>
+<div class="grid2 tinywrap">
+<div class="tiny"><div><div class="tinyname">LÉA</div><div class="ball">🏀</div><h2>MON<br>PASSEPORT</h2><p>Je regarde avec mon parent</p></div></div>
+<div class="jap" style="grid-template-columns:1fr">
+<div class="japcard play"><div class="mark">🏀</div><h3>JE<br>JOUE</h3><p>Je progresse avec mon ballon.</p><div class="stars">⭐⭐⭐☆☆</div></div>
+<div class="japcard ref"><div class="mark">🟧</div><h3>J’ARBITRE</h3><p>Je découvre les règles simples.</p><div class="stars">⭐☆☆☆☆</div></div>
+<div class="japcard part"><div class="mark">🤝</div><h3>JE PARTICIPE</h3><p>J’encourage mes copains et je respecte le groupe.</p><div class="stars">⭐⭐☆☆☆</div></div>
+</div>
+</div>
+<div class="grid2" style="margin-top:16px">
+<div class="card"><div class="title" style="margin:0 0 14px"><h2>Badges</h2><span>très visuel</span></div><div class="badges"><div class="badge">🏀<small>Ballon</small></div><div class="badge">👟<small>Bouger</small></div><div class="badge">🤲<small>Passe</small></div><div class="badge">🎯<small>Panier</small></div><div class="badge">🟧<small>Règles</small></div><div class="badge">👏<small>Copains</small></div></div></div>
+<div class="card"><div class="title" style="margin:0 0 14px"><h2>Souvenirs</h2><span>carnet de saison</span></div><div class="info"><div class="line"><div class="ico">📸</div><div><strong>Photo de saison</strong><span>Souvenir visible avec le parent.</span></div></div><div class="line"><div class="ico">🏀</div><div><strong>Moment basket</strong><span>Je joue, je découvre, je progresse.</span></div></div><div class="line"><div class="ico">🤝</div><div><strong>Vie de groupe</strong><span>Bienveillance, respect, encouragements.</span></div></div></div></div>
+</div>
+<div class="note">U5/U7 : pas de tableau, pas de lecture longue. On affiche le prénom, les étoiles, les badges et les souvenirs.</div>
+</section>
+
+<section id="u9" class="screen">
+<div class="title"><h2>Mode sportif</h2><span>U9 / U11 · plus mature, plus joueur</span></div>
+<div class="grid2">
+<div class="player"><div class="meta">SAISON 2026-2027 · U9F</div><h2>LÉA</h2><div class="jersey">#12</div><div class="stars">⭐⭐⭐⭐☆</div><div class="stats"><div class="stat">6 badges</div><div class="stat">11 présences</div><div class="stat">3 missions</div><div class="stat">ESBB</div></div></div>
+<div class="card"><div class="title" style="margin:0 0 14px"><h2>Passeport joueur</h2><span>famille</span></div><div class="info"><div class="line"><div class="ico">🎯</div><div><strong>Prochain défi</strong><span>Regarder avant de faire la passe.</span></div></div><div class="line"><div class="ico">🏆</div><div><strong>Dernier badge</strong><span>Je participe : encouragements et esprit d’équipe.</span></div></div><div class="line"><div class="ico">📸</div><div><strong>Souvenir récent</strong><span>Match à domicile ajouté au passeport.</span></div></div></div><div class="btnrow"><button class="btn">Voir badges</button><button class="btn secondary">Voir missions</button></div></div>
+</div>
+<div class="jap" style="margin-top:16px">
+<div class="japcard play"><div class="mark">🏀</div><h3>JE JOUE</h3><p>Je progresse avec mon ballon, mes passes, mes tirs et mon jeu collectif.</p><div class="stars">⭐⭐⭐⭐☆</div></div>
+<div class="japcard ref"><div class="mark">🟧</div><h3>J’ARBITRE</h3><p>Je comprends les règles simples, les lignes et les remises en jeu.</p><div class="stars">⭐⭐⭐☆☆</div></div>
+<div class="japcard part"><div class="mark">🤝</div><h3>JE PARTICIPE</h3><p>J’aide mon équipe, je respecte les autres et je fais vivre le club.</p><div class="stars">⭐⭐⭐⭐☆</div></div>
+</div>
+<div class="note">U9/U11 : passeport valorisant avec une présentation plus sportive et moins “petits”.</div>
+</section>
+
+<section id="missions" class="screen">
+<div class="title"><h2>Missions JAP</h2><span>démo cliquable · pas de classement</span></div>
+<div class="grid2">
+<div class="card"><div class="title" style="margin:0 0 14px"><h2>À expliquer aux parents</h2><span>simple</span></div><p style="color:var(--m);font-weight:800;line-height:1.65">Les missions ne sont pas des jeux pour occuper les enfants. Elles servent à comprendre le JAP : jouer, arbitrer et participer. En démo, l’enfant clique et gagne une étoile. En réel, le coach valide.</p></div>
+<div class="card"><div class="title" style="margin:0 0 14px"><h2>Principe</h2><span>coach</span></div><div class="info"><div class="line"><div class="ico">✅</div><div><strong>Pas de note</strong><span>Uniquement des validations positives.</span></div></div><div class="line"><div class="ico">⭐</div><div><strong>Étoile</strong><span>Une mission réussie peut devenir une étoile.</span></div></div><div class="line"><div class="ico">📋</div><div><strong>Coach</strong><span>Validation réelle plus tard côté coach.</span></div></div></div></div>
+</div>
+<div class="missions" style="margin-top:16px">
+<div class="mission"><div class="mi">🏀</div><h3>Je reconnais</h3><p id="symbolQuestion">Touche le ballon.</p><div class="choices" id="symbolOptions"></div><div class="feedback" id="symbolFeedback">Choisis une image.</div><div class="btnrow"><button class="btn secondary" onclick="newSymbolQuestion()">Nouveau</button></div></div>
+<div class="mission"><div class="mi">🟧</div><h3>Arbitrage</h3><p id="refQuestion">Le ballon sort du terrain. Que fait-on ?</p><div class="choices" id="refOptions"></div><div class="feedback" id="refFeedback">Choisis la bonne réponse.</div><div class="btnrow"><button class="btn secondary" onclick="newRefQuestion()">Nouvelle règle</button></div></div>
+<div class="mission"><div class="mi">🤝</div><h3>Équipe</h3><p id="teamQuestion">Un copain tombe. Que fais-tu ?</p><div class="choices" id="teamOptions"></div><div class="feedback" id="teamFeedback">Choisis l’attitude qui aide.</div><div class="btnrow"><button class="btn secondary" onclick="newTeamQuestion()">Nouvelle mission</button></div></div>
+<div class="mission"><div class="mi">🧠</div><h3>Mémo basket</h3><p>Retourne deux cartes. Trouve les paires.</p><div class="memo" id="memoGrid"></div><div class="btnrow"><button class="btn secondary" onclick="startMemo()">Rejouer</button></div></div>
+<div class="mission"><div class="mi">🎯</div><h3>Défi coach</h3><p>Le coach choisit un objectif : passe, tir, écoute, règle, respect.</p><div class="btnrow"><button class="btn" onclick="showReward('Défi validé','Le coach valide une étoile JAP.')">Valider</button><button class="btn secondary" onclick="showReward('À retenter','On essaiera au prochain entraînement.')">Plus tard</button></div></div>
+<div class="mission"><div class="mi">⭐</div><h3>Étoile gagnée</h3><p>Quand une mission est réussie, elle peut apparaître dans le passeport.</p><div class="stars" id="rewardStars">⭐⭐⭐☆☆</div><div class="btnrow"><button class="btn orange" onclick="addStar()">Gagner une étoile</button></div></div>
+</div>
+<div class="note">Les missions sont testables maintenant. Elles ne remplacent pas les validations coach, elles montrent l’expérience possible.</div>
+</section>
+
+<section id="coach" class="screen">
+<div class="title"><h2>Vue Coach JAP</h2><span>équipe complète</span></div>
+<div class="filters"><div class="filter"><label>Catégorie</label><select><option>U5</option><option>U7</option><option selected>U9F</option><option>U9M</option><option>U11F</option><option>U11M</option></select></div><div class="filter"><label>Évaluation</label><select><option selected>Évaluation JAP</option><option>Badge ponctuel</option><option>Fin de cycle</option><option>Fin de saison</option></select></div><div class="filter"><label>Saison</label><select><option selected>2026-2027</option><option>2027-2028</option></select></div><div class="filter"><label>Vue</label><select><option selected>Équipe complète</option><option>Détail enfant</option><option>Badges à valider</option></select></div></div>
+<div class="table"><div class="thead"><div><h2>U9F</h2><span>Validation ponctuelle des badges et étoiles</span></div><button class="btn orange" onclick="showReward('Équipe exportée','Démonstration export équipe JAP.')">Exporter</button></div>
+<div class="row"><div class="kid"><strong>Léa</strong><span>U9F · #12</span></div><div class="level gray">Éval. 12/10</div><div class="level green">Joue ⭐⭐⭐⭐</div><div class="level orange">Arbitre ⭐⭐⭐</div><div class="level white">Participe ⭐⭐⭐⭐</div></div>
+<div class="row"><div class="kid"><strong>Emma</strong><span>U9F · #8</span></div><div class="level gray">+ Badge</div><div class="level green">Joue ⭐⭐⭐</div><div class="level orange">Arbitre ⭐⭐</div><div class="level white">Participe ⭐⭐⭐</div></div>
+<div class="row"><div class="kid"><strong>Chloé</strong><span>U9F · #4</span></div><div class="level gray">À revoir</div><div class="level green">Joue ⭐⭐</div><div class="level orange">Arbitre ⭐</div><div class="level white">Participe ⭐⭐</div></div>
+<div class="row"><div class="kid"><strong>Inès</strong><span>U9F · #7</span></div><div class="level gray">+ Badge</div><div class="level green">Joue ⭐⭐⭐⭐</div><div class="level orange">Arbitre ⭐⭐</div><div class="level white">Participe ⭐⭐⭐⭐</div></div>
+</div>
+<div class="btnrow"><button class="btn">Enregistrer évaluation</button><button class="btn secondary">Ajouter badge</button><button class="btn secondary">Ajouter souvenir</button><button class="btn orange">Exporter équipe</button></div>
+<div class="note">Le coach n’évalue pas forcément à chaque séance. Il peut faire des points ponctuels : fin de cycle, observation, badge, fin de trimestre ou fin de saison.</div>
+</section>
+
+<section id="exports" class="screen">
+<div class="title"><h2>Exports</h2><span>prévu pour raccord futur appli</span></div>
+<div class="exportgrid"><div class="export"><strong>18</strong><span>enfants équipe</span></div><div class="export"><strong>11</strong><span>étoiles moyennes</span></div><div class="export"><strong>42</strong><span>badges validés</span></div><div class="export"><strong>89%</strong><span>présence entraînement</span></div></div>
+<div class="grid2" style="margin-top:16px"><div class="card"><div class="title" style="margin:0 0 14px"><h2>Exports prévus</h2><span>sans doublon</span></div><div class="info"><div class="line"><div class="ico">📋</div><div><strong>Export effectif équipe</strong><span>Liste des enfants par catégorie depuis l’application club.</span></div></div><div class="line"><div class="ico">✅</div><div><strong>Export présences entraînements</strong><span>Lecture future des présences déjà suivies dans l’application.</span></div></div><div class="line"><div class="ico">⭐</div><div><strong>Export JAP</strong><span>Étoiles, badges et progression par enfant / équipe / saison.</span></div></div><div class="line"><div class="ico">📤</div><div><strong>Export label</strong><span>Synthèse utilisable pour comité, dossier club et suivi école mini basket.</span></div></div></div><div class="btnrow"><button class="btn">Exporter synthèse</button><button class="btn secondary">Exporter CSV</button><button class="btn orange">Exporter PDF</button></div></div><div class="card"><div class="title" style="margin:0 0 14px"><h2>Raccord futur</h2><span>application ESBB</span></div><div class="info"><div class="line"><div class="ico">🔗</div><div><strong>Présences</strong><span>Le passeport ne recrée pas les présences : il les lit depuis l’application existante.</span></div></div><div class="line"><div class="ico">👥</div><div><strong>Effectifs</strong><span>Le coach peut sortir l’effectif de son équipe pour le suivi JAP.</span></div></div><div class="line"><div class="ico">🧾</div><div><strong>Label</strong><span>Le module prépare les éléments utiles sans remplacer l’application principale.</span></div></div></div></div></div>
+</section>
 </div>
 
-<div class="missions">
+<nav class="bottom">
+<button class="active" onclick="showScreenMobile('u5',this)"><span>⭐</span>U5/U7</button>
+<button onclick="showScreenMobile('u9',this)"><span>🏀</span>U9/U11</button>
+<button onclick="showScreenMobile('missions',this)"><span>🎯</span>Missions</button>
+<button onclick="showScreenMobile('coach',this)"><span>📋</span>Coach</button>
+<button onclick="showScreenMobile('exports',this)"><span>📤</span>Exports</button>
+</nav>
 
-<div class="mission">
-<div class="mission-top">
-<div class="badge">🏀</div>
-<div>
-<h4>Mission terrain</h4>
-</div>
-</div>
-<p>Reconnaître les lignes, savoir où remettre le ballon en jeu et comprendre les zones du terrain.</p>
-<div class="actions">
-<button class="primary">Commencer</button>
-<button class="secondary">Plus tard</button>
-</div>
-</div>
+<div class="modal" id="modal" onclick="if(event.target.id==='modal')closeModal()"><div class="modalcard"><h2 id="modalTitle">Bravo</h2><p id="modalText">Mission réussie.</p><div class="modalstar">⭐</div><div class="btnrow" style="justify-content:center"><button class="btn" onclick="closeModal()">Continuer</button></div></div></div>
 
-<div class="mission">
-<div class="mission-top">
-<div class="badge">🤝</div>
-<div>
-<h4>Mission équipe</h4>
-</div>
-</div>
-<p>Encourager ses copains, aider au rangement et adopter une bonne attitude pendant les entraînements.</p>
-<div class="actions">
-<button class="primary">Commencer</button>
-<button class="secondary">Plus tard</button>
-</div>
-</div>
-
-</div>
-
-<div class="coach">
-<div class="section-title">Vue Coach JAP</div>
-
-<div class="team-list">
-
-<div class="row">
-<div class="kid">
-<strong>Léa</strong>
-<span>U9F · #12</span>
-</div>
-<div class="level green">JE JOUE ⭐⭐⭐⭐</div>
-<div class="level orange">J’ARBITRE ⭐⭐⭐</div>
-<div class="level green">JE PARTICIPE ⭐⭐⭐⭐</div>
-</div>
-
-<div class="row">
-<div class="kid">
-<strong>Emma</strong>
-<span>U9F · #8</span>
-</div>
-<div class="level green">JE JOUE ⭐⭐⭐</div>
-<div class="level orange">J’ARBITRE ⭐⭐</div>
-<div class="level green">JE PARTICIPE ⭐⭐⭐</div>
-</div>
-
-</div>
-</div>
-
-<div class="footer-note">
-Connexion future prévue avec les présences entraînements, exports équipe et suivi label Mini Basket.
-</div>
-
-</div>
-
+<script>
+const symbolQuestions=[{q:"Touche le ballon.",good:"Ballon",options:[["🏀","Ballon"],["🎯","Panier"],["🤝","Copains"]]},{q:"Touche le panier.",good:"Panier",options:[["👟","Courir"],["🎯","Panier"],["🟧","Règles"]]},{q:"Touche les copains.",good:"Copains",options:[["🤝","Copains"],["🏀","Ballon"],["👏","Bravo"]]}];
+const refQuestions=[{q:"Le ballon sort du terrain. Que fait-on ?",good:"Remise en jeu",options:[["↩️","Remise en jeu"],["▶️","On continue"],["⛔","On arrête"]]},{q:"L’arbitre siffle. Que fais-tu ?",good:"Je m’arrête",options:[["✋","Je m’arrête"],["🏃","Je cours"],["😡","Je râle"]]},{q:"Tu marches avec le ballon sans dribbler. C’est quoi ?",good:"Marcher",options:[["👟","Marcher"],["🎯","Panier"],["🤝","Copain"]]}];
+const teamQuestions=[{q:"Un copain tombe. Que fais-tu ?",good:"Je l’aide",options:[["🤝","Je l’aide"],["😄","Je ris"],["🚶","Je pars"]]},{q:"Ton équipe perd. Quelle est la bonne attitude ?",good:"J’encourage",options:[["👏","J’encourage"],["😡","Je râle"],["🚶","J’arrête"]]},{q:"Le matériel est au sol. Que fais-tu ?",good:"Je range",options:[["🧺","Je range"],["🙈","Je cache"],["🏃","Je pars"]]}];
+let reward=3,memoFirst=null,memoLock=false,memoMatched=0;
+function setActive(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));document.querySelectorAll(".bottom button").forEach(b=>b.classList.remove("active"));document.getElementById(id).classList.add("active")}
+function showScreen(id,btn){setActive(id);btn.classList.add("active");syncMobile(id)}
+function showScreenMobile(id,btn){setActive(id);btn.classList.add("active");syncDesktop(id);window.scrollTo({top:0,behavior:"smooth"})}
+function syncDesktop(id){const o=["u5","u9","missions","coach","exports"],b=document.querySelectorAll(".tabs button"),i=o.indexOf(id);if(b[i])b[i].classList.add("active")}
+function syncMobile(id){const o=["u5","u9","missions","coach","exports"],b=document.querySelectorAll(".bottom button"),i=o.indexOf(id);if(b[i])b[i].classList.add("active")}
+function renderOptions(cid,fid,item,title){const c=document.getElementById(cid),f=document.getElementById(fid);c.innerHTML="";f.className="feedback";f.textContent="Choisis une réponse.";item.options.forEach(([emoji,label])=>{const b=document.createElement("button");b.className="choice";b.innerHTML=`<span>${emoji}</span><small>${label}</small>`;b.onclick=()=>{if(label===item.good){b.classList.add("correct");f.className="feedback ok";f.textContent="Bravo, bonne réponse !";showReward(title,"Tu gagnes une étoile de démo.")}else{b.classList.add("wrong");f.className="feedback ko";f.textContent="Presque. Essaie encore."}};c.appendChild(b)})}
+function newSymbolQuestion(){const i=symbolQuestions[Math.floor(Math.random()*symbolQuestions.length)];document.getElementById("symbolQuestion").textContent=i.q;renderOptions("symbolOptions","symbolFeedback",i,"Symbole trouvé")}
+function newRefQuestion(){const i=refQuestions[Math.floor(Math.random()*refQuestions.length)];document.getElementById("refQuestion").textContent=i.q;renderOptions("refOptions","refFeedback",i,"Mission arbitrage réussie")}
+function newTeamQuestion(){const i=teamQuestions[Math.floor(Math.random()*teamQuestions.length)];document.getElementById("teamQuestion").textContent=i.q;renderOptions("teamOptions","teamFeedback",i,"Mission équipe réussie")}
+function startMemo(){const g=document.getElementById("memoGrid"),arr=["🏀","🏀","🎯","🎯","🤲","🤲","🟧","🟧"].sort(()=>Math.random()-.5);memoFirst=null;memoLock=false;memoMatched=0;g.innerHTML="";arr.forEach(v=>{const b=document.createElement("button");b.className="memocard";b.dataset.value=v;b.textContent="⭐";b.onclick=()=>flipMemo(b);g.appendChild(b)})}
+function flipMemo(b){if(memoLock||b.classList.contains("done")||b.classList.contains("open"))return;b.classList.add("open");b.textContent=b.dataset.value;if(!memoFirst){memoFirst=b;return}if(memoFirst.dataset.value===b.dataset.value){memoFirst.classList.add("done");b.classList.add("done");memoFirst=null;memoMatched++;if(memoMatched===4)showReward("Mémo réussi","Tu as trouvé toutes les paires.")}else{memoLock=true;setTimeout(()=>{memoFirst.classList.remove("open");b.classList.remove("open");memoFirst.textContent="⭐";b.textContent="⭐";memoFirst=null;memoLock=false},700)}}
+function addStar(){reward=Math.min(5,reward+1);document.getElementById("rewardStars").textContent="⭐".repeat(reward)+"☆".repeat(5-reward);showReward("Étoile gagnée","Elle s’ajoute au passeport de démonstration.")}
+function showReward(t,x){document.getElementById("modalTitle").textContent=t;document.getElementById("modalText").textContent=x;document.getElementById("modal").classList.add("active")}
+function closeModal(){document.getElementById("modal").classList.remove("active")}
+document.addEventListener("DOMContentLoaded",()=>{newSymbolQuestion();newRefQuestion();newTeamQuestion();startMemo()});
+</script>
 </body>
 </html>
