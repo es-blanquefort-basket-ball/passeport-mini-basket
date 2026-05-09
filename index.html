@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ESBB Kids · Passeport Mini Basket</title>
+
+<style>
+:root{
+  --green:#075b3a;
+  --green2:#0c8f5f;
+  --orange:#ff9f1c;
+  --yellow:#ffd166;
+  --blue:#2f80ed;
+  --pink:#ff5c8a;
+  --purple:#8e5cff;
+  --cream:#fff8e7;
+  --white:#ffffff;
+  --text:#17352a;
+  --muted:#6d7d76;
+  --line:#dce8e1;
+  --shadow:0 16px 34px rgba(0,0,0,.13);
+  --radius:30px;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(255,209,102,.55), transparent 22%),
+    radial-gradient(circle at 88% 6%, rgba(255,92,138,.22), transparent 24%),
+    radial-gradient(circle at 80% 82%, rgba(47,128,237,.18), transparent 26%),
+    linear-gradient(180deg,#fffaf0 0%,#eaf8ef 100%);
+  color:var(--text);
+}
+
+.app{
+  max-width:1120px;
+  margin:auto;
+  padding:14px;
+}
+
+.hero{
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  color:white;
+  border-radius:34px;
+  padding:22px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"🏀";
+  position:absolute;
+  right:12px;
+  top:-18px;
+  font-size:130px;
+  opacity:.14;
+  transform:rotate(-12deg);
+}
+
+.hero small{
+  display:inline-flex;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.18);
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.hero h1{
+  margin:0;
+  font-size:clamp(30px,7vw,58px);
+  line-height:.95;
+  letter-spacing:-.05em;
+}
+
+.hero p{
+  margin:10px 0 0;
+  color:rgba(255,255,255,.9);
+  font-size:16px;
+  max-width:680px;
+}
+
+.tabs{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin:14px 0;
+  background:white;
+  padding:8px;
+  border-radius:24px;
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
+}
+
+.tabs button{
+  border:0;
+  border-radius:18px;
+  padding:14px 8px;
+  background:transparent;
+  color:var(--green);
+  font-weight:1000;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.tabs button.active{
+  background:var(--green);
+  color:white;
+}
+
+.screen{display:none;}
+.screen.active{display:block;}
+
+.child-top{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:14px;
+  margin-bottom:14px;
+}
+
+.card{
+  background:rgba(255,255,255,.94);
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:0 10px 26px rgba(0,0,0,.08);
+}
+
+.mascot{
+  min-height:270px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  background:
+    radial-gradient(circle at top, rgba(255,209,102,.55), transparent 42%),
+    white;
+}
+
+.mascot-face{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--orange),var(--yellow));
+  display:grid;
+  place-items:center;
+  font-size:72px;
+  box-shadow:0 16px 30px rgba(255,159,28,.3);
+  margin:auto;
+}
+
+.mascot h2{
+  font-size:34px;
+  margin:16px 0 2px;
+  letter-spacing:-.04em;
+}
+
+.mascot p{
+  margin:0;
+  color:var(--muted);
+  font-weight:800;
+}
+
+.big-worlds{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.world{
+  border:0;
+  min-height:250px;
+  border-radius:34px;
+  padding:20px 14px;
+  color:white;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+
+.world .emoji{
+  font-size:78px;
+  line-height:1;
+  filter:drop-shadow(0 8px 10px rgba(0,0,0,.15));
+}
+
+.world h2{
+  margin:12px 0 8px;
+  font-size:clamp(28px,5vw,44px);
+  line-height:.9;
+  letter-spacing:-.06em;
+}
+
+.stars{
+  font-size:30px;
+  letter-spacing:2px;
+  margin-top:12px;
+  text-shadow:0 4px 8px rgba(0,0,0,.15);
+}
+
+.world small{
+  display:block;
+  margin-top:8px;
+  font-weight:900;
+  opacity:.9;
+}
+
+.play{background:linear-gradient(160deg,#0c8f5f,#064b32);}
+.whistle{background:linear-gradient(160deg,#ff9f1c,#ef6c00);}
+.help{background:linear-gradient(160deg,#2f80ed,#1457b8);}
+
+.child-section{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:14px;
+}
+
+.badge-wall{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.kid-badge{
+  aspect-ratio:1;
+  border-radius:26px;
+  background:#fff8e7;
+  border:3px solid white;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  box-shadow:0 8px 18px rgba(0,0,0,.07);
+  position:relative;
+}
+
+.kid-badge .big{
+  font-size:42px;
+}
+
+.kid-badge.locked{
+  filter:grayscale(1);
+  opacity:.38;
+}
+
+.kid-badge span{
+  position:absolute;
+  bottom:8px;
+  left:6px;
+  right:6px;
+  font-size:11px;
+  font-weight:1000;
+}
+
+.photos{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.photo{
+  aspect-ratio:1;
+  border-radius:26px;
+  background:linear-gradient(135deg,#fff,#edf8f2);
+  border:3px solid white;
+  display:grid;
+  place-items:center;
+  font-size:42px;
+  box-shadow:0 8px 18px rgba(0,0,0,.07);
+}
+
+.parent-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.parent-list{
+  display:grid;
+  gap:10px;
+}
+
+.parent-line{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding:14px;
+  border-radius:22px;
+  background:#f7fcf9;
+  border:1px solid var(--line);
+}
+
+.parent-icon{
+  width:50px;
+  height:50px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  font-size:28px;
+  background:white;
+  box-shadow:0 5px 14px rgba(0,0,0,.06);
+  flex:0 0 auto;
+}
+
+.parent-line strong{display:block;}
+.parent-line span{
+  color:var(--muted);
+  font-size:14px;
+  font-weight:700;
+}
+
+.coach-top{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.select-box{
+  background:white;
+  border-radius:22px;
+  padding:12px;
+  border:1px solid var(--line);
+}
+
+.select-box label{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:1000;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+
+select{
+  width:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  font-size:17px;
+  font-weight:900;
+  color:var(--green);
+}
+
+.coach-layout{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:14px;
+}
+
+.quick-checks{
+  display:grid;
+  gap:10px;
+}
+
+.check-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px;
+  border-radius:22px;
+  background:#f8fcf9;
+  border:1px solid var(--line);
+}
+
+.check-card strong{display:block;}
+.check-card small{
+  display:block;
+  color:var(--muted);
+  font-weight:700;
+  margin-top:2px;
+}
+
+.check-card button{
+  border:0;
+  border-radius:16px;
+  padding:10px 12px;
+  background:var(--green);
+  color:white;
+  font-weight:1000;
+  cursor:pointer;
+}
+
+.table-wrap{
+  overflow-x:auto;
+  border-radius:24px;
+  border:1px solid var(--line);
+}
+
+table{
+  width:100%;
+  min-width:760px;
+  border-collapse:collapse;
+  background:white;
+}
+
+th,td{
+  border-bottom:1px solid var(--line);
+  padding:12px;
+  text-align:left;
+  font-size:14px;
+}
+
+th{
+  background:#eef8f2;
+  color:var(--green);
+  font-weight:1000;
+}
+
+.status{
+  display:inline-flex;
+  min-width:110px;
+  justify-content:center;
+  padding:7px 9px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:1000;
+}
+
+.todo{background:#eef1ef;color:#718078;}
+.work{background:#e9f2ff;color:#2f80ed;}
+.ok{background:#e5f8ed;color:#08734c;}
+.star{background:#fff2d8;color:#b16600;}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:14px;
+}
+
+.btn{
+  border:0;
+  border-radius:18px;
+  padding:13px 16px;
+  font-weight:1000;
+  cursor:pointer;
+  background:var(--green);
+  color:white;
+}
+
+.btn.alt{
+  background:#eef8f2;
+  color:var(--green);
+}
+
+.note{
+  margin-top:14px;
+  padding:14px;
+  border-radius:22px;
+  background:#fff6dc;
+  border:1px solid #ffe0a8;
+  color:#7a5300;
+  font-weight:800;
+}
+
+@media(max-width:900px){
+  .child-top,
+  .parent-grid,
+  .coach-layout{
+    grid-template-columns:1fr;
+  }
+
+  .big-worlds{
+    grid-template-columns:1fr;
+  }
+
+  .world{
+    min-height:180px;
+  }
+
+  .child-section{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:620px){
+  .tabs{
+    grid-template-columns:1fr;
+  }
+
+  .coach-top{
+    grid-template-columns:1fr;
+  }
+
+  .badge-wall{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .photos{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .hero{
+    border-radius:26px;
+  }
+
+  .card{
+    border-radius:24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <header class="hero">
+    <small>ESBB · Mini Basket</small>
+    <h1>Mon Passeport Mini Basket</h1>
+    <p>Une interface visuelle pour suivre les enfants de U5 à U11 : jouer, siffler, aider, progresser et garder des souvenirs.</p>
+  </header>
+
+  <nav class="tabs">
+    <button class="active" onclick="showScreen('kid', this)">Mode enfant</button>
+    <button onclick="showScreen('parent', this)">Espace parent</button>
+    <button onclick="showScreen('coach', this)">Espace coach</button>
+  </nav>
+
+  <!-- MODE ENFANT -->
+  <section id="kid" class="screen active">
+
+    <div class="child-top">
+
+      <div class="card mascot">
+        <div>
+          <div class="mascot-face">🦊</div>
+          <h2>Léa</h2>
+          <p>U9F · Saison 2026-2027</p>
+        </div>
+      </div>
+
+      <div class="big-worlds">
+
+        <button class="world play">
+          <div class="emoji">🏀</div>
+          <h2>JE<br>JOUE</h2>
+          <div class="stars">⭐⭐⭐☆☆</div>
+          <small>3 étoiles</small>
+        </button>
+
+        <button class="world whistle">
+          <div class="emoji">🟧</div>
+          <h2>JE<br>SIFFLE</h2>
+          <div class="stars">⭐☆☆☆☆</div>
+          <small>1 étoile</small>
+        </button>
+
+        <button class="world help">
+          <div class="emoji">🤝</div>
+          <h2>J’AIDE</h2>
+          <div class="stars">⭐⭐☆☆☆</div>
+          <small>2 étoiles</small>
+        </button>
+
+      </div>
+    </div>
+
+    <div class="child-section">
+
+      <div class="card">
+        <h2>Mes étoiles</h2>
+
+        <div class="badge-wall">
+          <div class="kid-badge"><div class="big">🏀</div><span>Ballon</span></div>
+          <div class="kid-badge"><div class="big">🎯</div><span>Panier</span></div>
+          <div class="kid-badge"><div class="big">🤲</div><span>Passe</span></div>
+          <div class="kid-badge"><div class="big">👟</div><span>Course</span></div>
+
+          <div class="kid-badge"><div class="big">🟧</div><span>Lignes</span></div>
+          <div class="kid-badge locked"><div class="big">📣</div><span>Sifflet</span></div>
+          <div class="kid-badge"><div class="big">👏</div><span>Copains</span></div>
+          <div class="kid-badge locked"><div class="big">⭐</div><span>Bonus</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Mes souvenirs</h2>
+
+        <div class="photos">
+          <div class="photo">📸</div>
+          <div class="photo">🏀</div>
+          <div class="photo">🎉</div>
+          <div class="photo">🤝</div>
+          <div class="photo">🏆</div>
+          <div class="photo">➕</div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ESPACE PARENT -->
+  <section id="parent" class="screen">
+
+    <div class="parent-grid">
+
+      <div class="card">
+        <h2>Résumé parent</h2>
+
+        <div class="parent-list">
+          <div class="parent-line">
+            <div class="parent-icon">🏀</div>
+            <div>
+              <strong>Je joue</strong>
+              <span>Léa a gagné 3 étoiles sur les gestes avec ballon.</span>
+            </div>
+          </div>
+
+          <div class="parent-line">
+            <div class="parent-icon">🟧</div>
+            <div>
+              <strong>Je siffle</strong>
+              <span>Elle commence à reconnaître les lignes et les sorties.</span>
+            </div>
+          </div>
+
+          <div class="parent-line">
+            <div class="parent-icon">🤝</div>
+            <div>
+              <strong>J’aide</strong>
+              <span>Elle participe, encourage et aide le groupe.</span>
+            </div>
+          </div>
+
+          <div class="parent-line">
+            <div class="parent-icon">🎯</div>
+            <div>
+              <strong>Prochain défi</strong>
+              <span>Regarder les copains avant de faire une passe.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Souvenirs de saison</h2>
+
+        <div class="parent-list">
+          <div class="parent-line">
+            <div class="parent-icon">📸</div>
+            <div>
+              <strong>Plateau mini-basket</strong>
+              <span>Photos disponibles dans l’espace parent.</span>
+            </div>
+          </div>
+
+          <div class="parent-line">
+            <div class="parent-icon">🏀</div>
+            <div>
+              <strong>Premier panier</strong>
+              <span>Souvenir ajouté au passeport.</span>
+            </div>
+          </div>
+
+          <div class="parent-line">
+            <div class="parent-icon">👏</div>
+            <div>
+              <strong>Esprit d’équipe</strong>
+              <span>Badge validé : encouragement des copains.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          Côté enfant, on garde une lecture très visuelle. Les détails techniques restent réservés au coach.
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ESPACE COACH -->
+  <section id="coach" class="screen">
+
+    <div class="coach-top">
+      <div class="select-box">
+        <label>Catégorie</label>
+        <select>
+          <option>U5</option>
+          <option>U7</option>
+          <option selected>U9F</option>
+          <option>U9M</option>
+          <option>U11F</option>
+          <option>U11M</option>
+        </select>
+      </div>
+
+      <div class="select-box">
+        <label>Enfant</label>
+        <select>
+          <option selected>Léa</option>
+          <option>Emma</option>
+          <option>Inès</option>
+          <option>Chloé</option>
+        </select>
+      </div>
+
+      <div class="select-box">
+        <label>Saison</label>
+        <select>
+          <option selected>2026-2027</option>
+          <option>2027-2028</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="coach-layout">
+
+      <div class="card">
+        <h2>Validation rapide</h2>
+
+        <div class="quick-checks">
+          <div class="check-card">
+            <div>
+              <strong>🏀 Ballon</strong>
+              <small>Je joue</small>
+            </div>
+            <button>+ étoile</button>
+          </div>
+
+          <div class="check-card">
+            <div>
+              <strong>🤲 Passe</strong>
+              <small>Je joue</small>
+            </div>
+            <button>+ étoile</button>
+          </div>
+
+          <div class="check-card">
+            <div>
+              <strong>🟧 Lignes</strong>
+              <small>Je siffle</small>
+            </div>
+            <button>+ étoile</button>
+          </div>
+
+          <div class="check-card">
+            <div>
+              <strong>👏 Copains</strong>
+              <small>J’aide</small>
+            </div>
+            <button>+ étoile</button>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn">Enregistrer</button>
+          <button class="btn alt">Ajouter souvenir</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Grille technique coach</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Axe</th>
+                <th>Compétence</th>
+                <th>Statut</th>
+                <th>Affichage enfant</th>
+                <th>Note coach</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Je joue</td>
+                <td>Dribbler en avançant</td>
+                <td><span class="status ok">Validé</span></td>
+                <td>Étoile ballon</td>
+                <td>Très à l’aise.</td>
+              </tr>
+
+              <tr>
+                <td>Je joue</td>
+                <td>Faire une passe simple</td>
+                <td><span class="status ok">Validé</span></td>
+                <td>Badge passe</td>
+                <td>Bonne progression.</td>
+              </tr>
+
+              <tr>
+                <td>Je joue</td>
+                <td>Regarder avant de passer</td>
+                <td><span class="status work">En cours</span></td>
+                <td>Prochain défi parent</td>
+                <td>À retravailler doucement.</td>
+              </tr>
+
+              <tr>
+                <td>Je siffle</td>
+                <td>Reconnaître les lignes</td>
+                <td><span class="status star">Étoile</span></td>
+                <td>Étoile orange</td>
+                <td>Comprend les sorties.</td>
+              </tr>
+
+              <tr>
+                <td>Je siffle</td>
+                <td>Reconnaître un marcher simple</td>
+                <td><span class="status todo">Non observé</span></td>
+                <td>Non affiché</td>
+                <td>Pas encore travaillé.</td>
+              </tr>
+
+              <tr>
+                <td>J’aide</td>
+                <td>Encourager les copains</td>
+                <td><span class="status ok">Validé</span></td>
+                <td>Badge copains</td>
+                <td>Très positif.</td>
+              </tr>
+
+              <tr>
+                <td>J’aide</td>
+                <td>Ranger le matériel</td>
+                <td><span class="status work">En cours</span></td>
+                <td>Non affiché</td>
+                <td>À encourager.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="actions">
+          <button class="btn">Enregistrer la grille</button>
+          <button class="btn alt">Exporter passeport</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note">
+      Règle : le coach voit les compétences. L’enfant voit des étoiles, des pictos et des souvenirs. Le parent voit une synthèse positive.
+    </div>
+
+  </section>
+
+</div>
+
+<script>
+function showScreen(id, btn){
+  document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
+  document.querySelectorAll('.tabs button').forEach(button => button.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+
+</body>
+</html>
