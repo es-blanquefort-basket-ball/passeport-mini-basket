@@ -1,6 +1,4 @@
-from pathlib import Path
-
-html = r'''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8" />
@@ -338,6 +336,161 @@ button,select{font-family:inherit;}
   .bottom-nav button span{font-size:22px;}
   .bottom-nav button.active{color:var(--green);}
 }
+
+/* JEUX INTERACTIFS V5 */
+.playable-card{
+  background:white;
+  border-radius:30px;
+  padding:18px;
+  box-shadow:var(--shadow-soft);
+  min-height:230px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.playable-card h4{
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:34px;
+  line-height:.9;
+}
+.playable-card p{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:700;
+}
+.playable-zone{
+  margin-top:14px;
+  display:grid;
+  gap:10px;
+}
+.symbol-options{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.symbol-btn{
+  min-height:82px;
+  border:0;
+  border-radius:22px;
+  background:#F8FCF9;
+  border:2px solid var(--line);
+  font-size:36px;
+  cursor:pointer;
+  box-shadow:0 6px 14px rgba(0,0,0,.04);
+}
+.symbol-btn.good{
+  background:var(--green-pale);
+  border-color:var(--green-soft);
+}
+.symbol-btn.bad{
+  background:var(--orange-pale);
+  border-color:var(--orange);
+}
+.feedback{
+  min-height:38px;
+  padding:10px 12px;
+  border-radius:18px;
+  background:#F8FCF9;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:900;
+}
+.feedback.success{
+  background:var(--green-pale);
+  color:var(--green);
+}
+.feedback.warning{
+  background:var(--orange-pale);
+  color:#905500;
+}
+.memo-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+.memo-card{
+  aspect-ratio:1;
+  border:0;
+  border-radius:20px;
+  background:var(--green);
+  color:white;
+  display:grid;
+  place-items:center;
+  font-size:28px;
+  cursor:pointer;
+  box-shadow:0 6px 14px rgba(0,0,0,.08);
+}
+.memo-card.revealed,
+.memo-card.matched{
+  background:var(--cream);
+  color:var(--text);
+  border:2px solid white;
+}
+.game-score{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+.score-pill{
+  border-radius:999px;
+  padding:7px 10px;
+  background:var(--green-pale);
+  color:var(--green);
+  font-size:12px;
+  font-weight:900;
+}
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(3,32,21,.64);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+}
+.modal.active{
+  display:flex;
+}
+.modal-card{
+  width:100%;
+  max-width:520px;
+  border-radius:34px;
+  background:white;
+  padding:24px;
+  box-shadow:0 24px 70px rgba(0,0,0,.26);
+  text-align:center;
+}
+.modal-card h3{
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:52px;
+  line-height:.86;
+  color:var(--green);
+}
+.modal-card p{
+  margin-top:12px;
+  color:var(--muted);
+  font-weight:800;
+}
+.modal-stars{
+  margin-top:14px;
+  font-size:38px;
+}
+.modal-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+@media(max-width:680px){
+  .symbol-options{grid-template-columns:repeat(3,1fr);}
+  .memo-grid{grid-template-columns:repeat(4,1fr);}
+  .modal-card h3{font-size:42px;}
+}
+
 </style>
 </head>
 
@@ -489,74 +642,112 @@ button,select{font-family:inherit;}
     </div>
   </section>
 
-  <section id="defis" class="screen">
+  
+<section id="defis" class="screen">
     <div class="challenge-hero">
       <div class="challenge-card featured">
         <h3>DÉFIS<br>MINI BASKET</h3>
-        <p>Ce ne sont pas des jeux gratuits : ce sont de petits défis pour comprendre le JAP en jouant avec les pictos, les règles et les bonnes attitudes.</p>
-        <div class="btn-row"><button class="btn orange">Lancer un défi</button><button class="btn secondary">Voir les étoiles</button></div>
+        <p>Cette version est testable : les enfants peuvent cliquer, répondre, retourner les cartes et gagner une étoile de démo.</p>
+        <div class="btn-row">
+          <button class="btn orange" onclick="launchRandomChallenge()">Défi surprise</button>
+          <button class="btn secondary" onclick="showReward('Bravo !', 'Tu as terminé un défi Mini Basket.')">Voir l’étoile</button>
+        </div>
       </div>
+
       <div class="challenge-card soft">
-        <h3>COMMENT<br>ÇA MARCHE ?</h3>
-        <p>U5/U7 : reconnaître les pictos. U9/U11 : répondre à des situations de jeu, d’arbitrage ou de vie d’équipe.</p>
-        <div class="tags"><div class="tag">Pas de classement</div><div class="tag">Pas de note</div><div class="tag">Étoiles positives</div></div>
+        <h3>OBJECTIF<br>PÉDAGOGIQUE</h3>
+        <p>On apprend le JAP en jouant : reconnaître, choisir, arbitrer, encourager. Pas de classement, pas de note.</p>
+        <div class="tags">
+          <div class="tag">U5/U7 : pictos</div>
+          <div class="tag">U9/U11 : situations</div>
+          <div class="tag">Coach : validation</div>
+        </div>
       </div>
     </div>
 
     <div class="game-grid">
-      <div class="game">
-        <div class="game-icon">👆</div>
-        <h4>Je trouve le bon symbole</h4>
-        <p>Pour les U5/U7 : retrouver le ballon, le panier, les copains ou l’arbitre.</p>
-        <div class="choice-grid">
-          <button class="choice ok" title="Ballon">🏀</button><button class="choice" title="Panier">🎯</button><button class="choice" title="Copains">🤝</button>
+
+      <div class="playable-card">
+        <div>
+          <div class="game-icon">👆</div>
+          <h4>Je trouve le bon symbole</h4>
+          <p id="symbolQuestion">Touche le ballon.</p>
+        </div>
+        <div class="playable-zone">
+          <div class="symbol-options" id="symbolOptions"></div>
+          <div class="feedback" id="symbolFeedback">Choisis une image.</div>
+          <button class="btn secondary" onclick="newSymbolQuestion()">Nouveau symbole</button>
         </div>
       </div>
 
-      <div class="game">
-        <div class="game-icon">🧠</div>
-        <h4>Mémo des gestes basket</h4>
-        <p>Associer les cartes : ballon, panier, passe, règles. Simple et jouable au doigt.</p>
-        <div class="memory-grid">
-          <div class="memory-card">🏀</div><div class="memory-card">🎯</div><div class="memory-card">🤲</div><div class="memory-card">🟧</div>
-          <div class="memory-card">🏀</div><div class="memory-card">🎯</div><div class="memory-card">🤲</div><div class="memory-card">🟧</div>
+      <div class="playable-card">
+        <div>
+          <div class="game-icon">🧠</div>
+          <h4>Mémo des gestes basket</h4>
+          <p>Retourne deux cartes. Trouve les paires.</p>
+        </div>
+        <div class="playable-zone">
+          <div class="memo-grid" id="memoGrid"></div>
+          <div class="game-score">
+            <div class="score-pill" id="memoPairs">Paires : 0 / 4</div>
+            <button class="btn secondary" onclick="startMemo()">Rejouer</button>
+          </div>
         </div>
       </div>
 
-      <div class="game">
-        <div class="game-icon">🟧</div>
-        <h4>Défi arbitrage</h4>
-        <p>Le ballon sort de la ligne. Que fait-on ? On remet en jeu.</p>
-        <div class="choice-grid">
-          <button class="choice" title="On continue">▶️</button><button class="choice ok" title="Remise en jeu">↩️</button><button class="choice no" title="On arrête">⛔</button>
+      <div class="playable-card">
+        <div>
+          <div class="game-icon">🟧</div>
+          <h4>Défi arbitrage</h4>
+          <p id="refQuestion">Le ballon sort de la ligne. Que fait-on ?</p>
+        </div>
+        <div class="playable-zone">
+          <div class="symbol-options" id="refOptions"></div>
+          <div class="feedback" id="refFeedback">Choisis la bonne action.</div>
+          <button class="btn secondary" onclick="newRefQuestion()">Nouvelle règle</button>
         </div>
       </div>
 
-      <div class="game">
-        <div class="game-icon">🤝</div>
-        <h4>Défi copains / club</h4>
-        <p>Ton équipe perd. Quelle est la bonne attitude ? Encourager et rester avec le groupe.</p>
-        <div class="choice-grid">
-          <button class="choice ok" title="J'encourage">👏</button><button class="choice no" title="Je râle">😡</button><button class="choice" title="Je pars">🚶</button>
+      <div class="playable-card">
+        <div>
+          <div class="game-icon">🤝</div>
+          <h4>Défi copains / club</h4>
+          <p id="teamQuestion">Ton équipe perd. Quelle est la bonne attitude ?</p>
+        </div>
+        <div class="playable-zone">
+          <div class="symbol-options" id="teamOptions"></div>
+          <div class="feedback" id="teamFeedback">Choisis l’attitude qui aide le groupe.</div>
+          <button class="btn secondary" onclick="newTeamQuestion()">Nouvelle mission</button>
         </div>
       </div>
 
-      <div class="game">
-        <div class="game-icon">🎯</div>
-        <h4>Défi du coach</h4>
-        <p>Un mini-objectif validé par le coach : passe, tir, écoute, règle, respect.</p>
-        <div class="btn-row"><button class="btn">Valider</button><button class="btn secondary">Plus tard</button></div>
+      <div class="playable-card">
+        <div>
+          <div class="game-icon">🎯</div>
+          <h4>Défi du coach</h4>
+          <p>Le coach choisit un mini-objectif et peut le valider.</p>
+        </div>
+        <div class="playable-zone">
+          <button class="btn" onclick="showReward('Défi validé', 'Le coach valide une étoile JAP.')">Valider le défi</button>
+          <button class="btn secondary" onclick="showReward('À retenter', 'On pourra réessayer au prochain entraînement.')">Plus tard</button>
+        </div>
       </div>
 
-      <div class="game">
-        <div class="game-icon">⭐</div>
-        <h4>Mon étoile gagnée</h4>
-        <p>Quand un défi est validé, une étoile apparaît dans le passeport.</p>
-        <div class="stars">⭐⭐⭐⭐☆</div>
+      <div class="playable-card">
+        <div>
+          <div class="game-icon">⭐</div>
+          <h4>Mon étoile gagnée</h4>
+          <p>Quand un défi est réussi, l’enfant voit une étoile apparaître.</p>
+        </div>
+        <div class="playable-zone">
+          <div class="stars" id="rewardStars">⭐⭐⭐☆☆</div>
+          <button class="btn orange" onclick="addDemoStar()">Gagner une étoile</button>
+        </div>
       </div>
+
     </div>
 
-    <div class="note">Les défis sont une couche pédagogique : ils ne remplacent pas l’évaluation du coach et ne créent pas de classement.</div>
+    <div class="note">Les défis sont maintenant cliquables en démo. Ils restent pédagogiques : ils ne remplacent pas l’évaluation du coach.</div>
   </section>
 
   <section id="coach" class="screen">
@@ -654,11 +845,175 @@ function syncMobile(id){
   const index = order.indexOf(id);
   if(mobileButtons[index]) mobileButtons[index].classList.add('active');
 }
+
+const symbolQuestions = [
+  { q:"Touche le ballon.", good:"🏀", options:["🏀","🎯","🤝"] },
+  { q:"Touche le panier.", good:"🎯", options:["👟","🎯","🟧"] },
+  { q:"Touche les copains.", good:"🤝", options:["🤝","🏀","👏"] },
+  { q:"Touche l’arbitre.", good:"🟧", options:["🎯","🟧","👟"] }
+];
+
+const refQuestions = [
+  { q:"Le ballon sort de la ligne. Que fait-on ?", good:"↩️", options:["▶️","↩️","⛔"], labels:["On continue","Remise en jeu","On arrête tout"] },
+  { q:"Tu entends le sifflet. Que fais-tu ?", good:"✋", options:["🏃","✋","😡"], labels:["Je cours","Je m’arrête","Je râle"] },
+  { q:"Un copain tombe. Que fais-tu ?", good:"🤝", options:["🤝","▶️","😡"], labels:["J’aide","Je continue","Je crie"] }
+];
+
+const teamQuestions = [
+  { q:"Ton équipe perd. Quelle est la bonne attitude ?", good:"👏", options:["👏","😡","🚶"], labels:["J’encourage","Je râle","Je pars"] },
+  { q:"Le matériel est au sol. Que fais-tu ?", good:"🧺", options:["🧺","🙈","🏃"], labels:["Je range","Je fais semblant","Je pars vite"] },
+  { q:"Un copain réussit. Que fais-tu ?", good:"🙌", options:["🙌","😒","🤐"], labels:["Je félicite","Je boude","Je ne dis rien"] }
+];
+
+let rewardCount = 3;
+let memoFirst = null;
+let memoLock = false;
+let memoMatched = 0;
+
+function shuffle(arr){
+  return [...arr].sort(() => Math.random() - 0.5);
+}
+
+function renderOptions(containerId, feedbackId, item, rewardTitle){
+  const container = document.getElementById(containerId);
+  const feedback = document.getElementById(feedbackId);
+  container.innerHTML = "";
+  feedback.className = "feedback";
+  feedback.textContent = "Choisis une réponse.";
+
+  item.options.forEach((opt, idx) => {
+    const btn = document.createElement("button");
+    btn.className = "symbol-btn";
+    btn.textContent = opt;
+    if(item.labels && item.labels[idx]) btn.title = item.labels[idx];
+    btn.onclick = () => {
+      if(opt === item.good){
+        btn.classList.add("good");
+        feedback.className = "feedback success";
+        feedback.textContent = "Bravo, bonne réponse !";
+        showReward(rewardTitle, "Tu gagnes une étoile de démo.");
+      } else {
+        btn.classList.add("bad");
+        feedback.className = "feedback warning";
+        feedback.textContent = "Presque ! Essaie encore.";
+      }
+    };
+    container.appendChild(btn);
+  });
+}
+
+function newSymbolQuestion(){
+  const item = symbolQuestions[Math.floor(Math.random()*symbolQuestions.length)];
+  document.getElementById("symbolQuestion").textContent = item.q;
+  renderOptions("symbolOptions","symbolFeedback",item,"Symbole trouvé !");
+}
+
+function newRefQuestion(){
+  const item = refQuestions[Math.floor(Math.random()*refQuestions.length)];
+  document.getElementById("refQuestion").textContent = item.q;
+  renderOptions("refOptions","refFeedback",item,"Défi arbitrage réussi !");
+}
+
+function newTeamQuestion(){
+  const item = teamQuestions[Math.floor(Math.random()*teamQuestions.length)];
+  document.getElementById("teamQuestion").textContent = item.q;
+  renderOptions("teamOptions","teamFeedback",item,"Défi participation réussi !");
+}
+
+function startMemo(){
+  const grid = document.getElementById("memoGrid");
+  const cards = shuffle(["🏀","🏀","🎯","🎯","🤲","🤲","🟧","🟧"]);
+  memoFirst = null;
+  memoLock = false;
+  memoMatched = 0;
+  document.getElementById("memoPairs").textContent = "Paires : 0 / 4";
+  grid.innerHTML = "";
+
+  cards.forEach((value, index) => {
+    const btn = document.createElement("button");
+    btn.className = "memo-card";
+    btn.dataset.value = value;
+    btn.dataset.index = index;
+    btn.textContent = "⭐";
+    btn.onclick = () => flipMemo(btn);
+    grid.appendChild(btn);
+  });
+}
+
+function flipMemo(btn){
+  if(memoLock || btn.classList.contains("matched") || btn.classList.contains("revealed")) return;
+  btn.classList.add("revealed");
+  btn.textContent = btn.dataset.value;
+
+  if(!memoFirst){
+    memoFirst = btn;
+    return;
+  }
+
+  if(memoFirst.dataset.value === btn.dataset.value){
+    memoFirst.classList.add("matched");
+    btn.classList.add("matched");
+    memoFirst = null;
+    memoMatched++;
+    document.getElementById("memoPairs").textContent = "Paires : " + memoMatched + " / 4";
+    if(memoMatched === 4){
+      showReward("Mémo réussi !", "Tu as trouvé toutes les paires.");
+    }
+  } else {
+    memoLock = true;
+    setTimeout(() => {
+      memoFirst.classList.remove("revealed");
+      btn.classList.remove("revealed");
+      memoFirst.textContent = "⭐";
+      btn.textContent = "⭐";
+      memoFirst = null;
+      memoLock = false;
+    }, 700);
+  }
+}
+
+function addDemoStar(){
+  rewardCount = Math.min(5, rewardCount + 1);
+  document.getElementById("rewardStars").textContent = "⭐".repeat(rewardCount) + "☆".repeat(5-rewardCount);
+  showReward("Étoile gagnée !", "Elle s’ajoute au passeport de démo.");
+}
+
+function showReward(title, text){
+  document.getElementById("modalTitle").textContent = title;
+  document.getElementById("modalText").textContent = text;
+  document.getElementById("rewardModal").classList.add("active");
+}
+
+function closeReward(){
+  document.getElementById("rewardModal").classList.remove("active");
+}
+
+function launchRandomChallenge(){
+  const choices = [newSymbolQuestion, newRefQuestion, newTeamQuestion, startMemo];
+  choices[Math.floor(Math.random()*choices.length)]();
+  showReward("Défi prêt", "Un défi de démo vient d’être lancé.");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  newSymbolQuestion();
+  newRefQuestion();
+  newTeamQuestion();
+  startMemo();
+});
+
 </script>
+
+<div class="modal" id="rewardModal" onclick="if(event.target.id==='rewardModal') closeReward()">
+  <div class="modal-card">
+    <h3 id="modalTitle">Bravo !</h3>
+    <p id="modalText">Tu as réussi un défi Mini Basket.</p>
+    <div class="modal-stars">⭐</div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeReward()">Continuer</button>
+      <button class="btn secondary" onclick="closeReward()">Fermer</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
-'''
-
-path = Path("/mnt/data/passeport-mini-basket-v4.html")
-path.write_text(html, encoding="utf-8")
-path
